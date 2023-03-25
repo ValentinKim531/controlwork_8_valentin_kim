@@ -21,6 +21,7 @@ class ProductReviewCreateView(CreateView):
         product = get_object_or_404(Product, pk=self.kwargs.get("pk"))
         review = form.save(commit=False)
         review.product = product
+        review.author = self.request.user
         review.save()
         return redirect("product_detail", pk=product.pk)
 

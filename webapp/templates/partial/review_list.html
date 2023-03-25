@@ -1,0 +1,18 @@
+{% if is_paginated %}
+{% include 'partial/pagination.html' %}
+{% endif %}
+{% for review in reviews %}
+<div>
+    <p><b>Review author: {{ review.author }}</b> placed at {{ review.created_at|date:'d.m.Y H:i:s' }}</p>
+    <div class="pre"><b>Review text:</b> {{ review.text }}</div>
+    <div class="pre"><b>Product's rating:</b> {{ review.rating }}</div>
+</div>
+<p>
+    <a href="{% url 'review_detail' review.pk %}">See more..</a>
+</p>
+{% empty %}
+<p>No reviews yet.</p>
+{% endfor %}
+{% if is_paginated %}
+{% include 'partial/pagination.html' %}
+{% endif %}

@@ -1981,7 +1981,8 @@ readers do not read off random characters that represent icons */
 .fa-colon-sign::before {
   content: "\e140"; }
 
-.fa-comment::before {
+.fa-
+comment::before {
   content: "\f075"; }
 
 .fa-comment-dollar::before {

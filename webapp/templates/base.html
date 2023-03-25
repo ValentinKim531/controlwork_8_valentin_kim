@@ -31,10 +31,28 @@
                         <li class="nav-item">
                             <a class="btn btn-primary" href="{% url 'index' %}">Home</a>
                         </li>
+                        {% block menu %}{% endblock %}
+                        {% if request.user.is_authenticated %}
                         <li class="nav-item">
                             <a class="btn btn-primary" href="{% url 'product_add' %}">Add Product</a>
                         </li>
-                        {% block menu %}{% endblock %}
+                        <li>
+                            <a href="{% url 'profile' user.pk %}" class="btn btn-primary">Profile</a>
+                        </li>
+                        <li>
+                            <form action="{% url 'logout' %}" method="post">
+                                {% csrf_token %}
+                                <input type="submit" class="btn btn-primary" value="Выйти">
+                            </form>
+                        </li>
+                        <l class="btn"><b>Привет {{ user.username }}</b></l>
+                            {% else %}
+                        <li>
+                              <a href="{% url 'login' %}?next={{ request.get_full_path }}" class="btn btn-primary">Sign in</a>
+                              <a href="{% url 'register' %}" class="btn btn-primary">Sign Up</a>
+                        </li>
+                            {% endif %}
+
                     </ul>
                 </div>
             </div>
