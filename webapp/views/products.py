@@ -9,7 +9,7 @@ from webapp.models import Product
 
 class GroupPermissionMixin(UserPassesTestMixin):
     def test_func(self):
-        return self.request.user.groups.filter(name__in=['Moderators']).exists()
+        return self.request.user.groups.filter(name__in=['Moderators', 'users']).exists()
 
 
 class ProductCreateView(GroupPermissionMixin, SuccessMessageMixin, CreateView):

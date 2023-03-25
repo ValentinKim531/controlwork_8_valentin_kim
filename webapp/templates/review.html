@@ -1,8 +1,14 @@
 {% extends 'base.html' %}
 {% block title %}Review{% endblock %}
 {% block menu %}
+{% if user.is_authenticated %}
+{% if perms.webapp.change_review or review.author == request.user%}
 <a class="btn btn-success" href="{% url 'review_update' review.pk %}">Update review</a>
+{% endif %}
+{% if perms.webapp.delete_review or review.author == request.user%}
 <a class="btn btn-danger" href="{% url 'review_delete' review.pk %}">Delete review</a>
+{% endif %}
+{% endif %}
 {% endblock %}
 {% block content %}
 <div class="container">

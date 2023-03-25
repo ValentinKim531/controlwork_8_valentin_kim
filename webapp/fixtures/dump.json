@@ -29,12 +29,12 @@
   "model": "webapp.product",
   "pk": 3,
   "fields": {
-    "title": "Фильм \"Джон Уик 4\" (2023)",
+    "title": "Фильм \"Джон Уик 4\" (2023).",
     "category": "other",
-    "description": "В сети уже появились первые отзывы критиков на долгожданную для многих четвертую часть \"Джона Уика\" с Киану Ривзом который по традиции исполняет там главную роль.",
+    "description": "В сети уже появились первые отзывы критиков на долгожданную для многих четвертую часть \"Джона Уика\" с Киану Ривзом который по традиции исполняет там главную роль..",
     "image": "https://i.otzovik.com/objects/b/2230000/2221621.png",
     "created_at": "2023-03-25T06:34:01.703Z",
-    "updated_at": "2023-03-25T06:34:01.703Z",
+    "updated_at": "2023-03-25T09:06:56.717Z",
     "is_deleted": false
   }
 },
@@ -48,6 +48,19 @@
     "image": "https://texterra.ru/upload/iblock/17a/zk4qwtfo4ttmm4qrgtkne62ncyc70vyj/anons.webp",
     "created_at": "2023-03-25T06:35:28.701Z",
     "updated_at": "2023-03-25T06:35:28.701Z",
+    "is_deleted": false
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 5,
+  "fields": {
+    "title": "SAMSUNG BESPOKE RF60A91R18A",
+    "category": "other",
+    "description": "",
+    "image": "https://www.mechta.kz/export/1cbitrix/import_files/2d/2d0db868-54dc-11ed-a24c-005056b6dbd7-480.webp",
+    "created_at": "2023-03-25T08:52:01.601Z",
+    "updated_at": "2023-03-25T08:52:01.601Z",
     "is_deleted": false
   }
 },
@@ -97,6 +110,18 @@
     "rating": 2,
     "created_at": "2023-03-25T06:43:06.044Z",
     "updated_at": "2023-03-25T06:43:06.044Z"
+  }
+},
+{
+  "model": "webapp.review",
+  "pk": 5,
+  "fields": {
+    "author": 1,
+    "product": 5,
+    "text": "отличный продукт!",
+    "rating": 5,
+    "created_at": "2023-03-25T09:19:44.792Z",
+    "updated_at": "2023-03-25T09:19:44.792Z"
   }
 }
 ]

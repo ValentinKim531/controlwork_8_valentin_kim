@@ -1,4 +1,4 @@
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.shortcuts import get_object_or_404, redirect
 from django.urls import reverse, reverse_lazy
 from django.views.generic import CreateView, UpdateView, DeleteView, DetailView
@@ -13,10 +13,11 @@ class ReviewDetailView(DetailView):
     model = Review
 
 
-class ProductReviewCreateView(GroupPermissionMixin, CreateView):
+class ProductReviewCreateView(GroupPermissionMixin, PermissionRequiredMixin, CreateView):
     model = Review
     template_name = "review_create.html"
     form_class = ProductReviewForm
+    groups = ['users']
 
     def form_valid(self, form):
         product = get_object_or_404(Product, pk=self.kwargs.get("pk"))
@@ -26,8 +27,12 @@ class ProductReviewCreateView(GroupPermissionMixin, CreateView):
         review.save()
         return redirect("product_detail", pk=product.pk)
 
+    def test_func(self):
+        return self.get_object().author == self.request.user or \
+            self.request.user.has_perm('add_review')
 
-class ReviewUpdateView(GroupPermissionMixin, UpdateView):
+
+class ReviewUpdateView(GroupPermissionMixin, PermissionRequiredMixin, UpdateView):
     model = Review
     template_name = "review_update.html"
     form_class = ProductReviewForm
@@ -37,9 +42,17 @@ class ReviewUpdateView(GroupPermissionMixin, UpdateView):
     def get_success_url(self):
         return reverse("review_detail", kwargs={"pk": self.object.pk})
 
+    def test_func(self):
+        return self.get_object().author == self.request.user or \
+            self.request.user.has_perm('change_review')
 
-class ReviewDeleteView(GroupPermissionMixin, DeleteView):
+
+class ReviewDeleteView(GroupPermissionMixin, PermissionRequiredMixin, DeleteView):
     template_name = "review_confirm_delete.html"
     model = Review
     success_url = reverse_lazy("index")
     groups = ['Moderators']
+
+    def test_func(self):
+        return self.get_object().author == self.request.user or \
+            self.request.user.has_perm('delete_review')
