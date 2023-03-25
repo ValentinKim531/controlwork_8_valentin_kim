@@ -6,6 +6,7 @@ from django.core.validators import MinValueValidator
 
 # Create your models here.
 
+
 class StatusChoice(TextChoices):
     OTHER = "other", "Разное"
     PHONE = "phones", "Смартфоны"
@@ -35,15 +36,13 @@ class Product(models.Model):
         null=True,
         blank=True,
         verbose_name="Ссылка на изображение",
-        default="https://texterra.ru/upload/iblock/17a/zk4qwtfo4ttmm4qrgtkne62ncyc70vyj/anons.webp"
+        default="https://texterra.ru/upload/iblock/17a/zk4qwtfo4ttmm4qrgtkne62ncyc70vyj/anons.webp",
     )
     created_at = models.DateTimeField(
-        auto_now_add=True,
-        verbose_name="Время создания"
+        auto_now_add=True, verbose_name="Время создания"
     )
     updated_at = models.DateTimeField(
-        auto_now=True,
-        verbose_name="Дата и время обновления"
+        auto_now=True, verbose_name="Дата и время обновления"
     )
     is_deleted = models.BooleanField(
         verbose_name="удалено", null=False, default=False

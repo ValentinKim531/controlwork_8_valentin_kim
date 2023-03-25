@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% block title %}Product confirm delete{% endblock %}
+{% block menu %}
+
+{% endblock %}
+{% block content %}
+<div class="container-fluid">
+    <h1>Are you sure you want to delete the product?</h1>
+    <div class="card mb-3 modern">
+        <div class="row g-0">
+            <div class="col-md-6">
+                <img class="image_flex_product" src="{{ product.image }}" alt="product photo">
+            </div>
+            <div class="col-12 col-sm-12 col-lg-6">
+                <div class="card-body">
+                    <h1 class="card-title">{{ product.title }}</h1>
+           А         <p>{{ product.category }}</p>
+                    <p class="card-text transfer_text_space">{{ product.description }}</p>
+                    <form action="{% url 'confirm_delete' product.pk %}" method="post">
+                {% csrf_token %}
+                <span><input class="btn btn-danger" type="submit" value="Delete"></span>
+                        <span><a class="btn btn-info" href="{% url 'index' %}">Cancel</a></span>
+            </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+

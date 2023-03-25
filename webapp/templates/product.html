@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}Product{% endblock %}
+{% block menu %}
+<a href="{% url 'product_update' product.pk %}" class="btn btn-success">Update Product</a>
+<a href="{% url 'product_delete' product.pk %}" class="btn btn-danger">Delete Product</a>
+<a href="{% url 'product_review_add' product.pk %}" class="btn btn-primary">Add review</a></li>
+{% endblock %}
+{% block content %}
+<div class="container-fluid">
+    <div class="card mb-3 modern">
+        <div class="row g-0">
+            <div class="col-md-6">
+                <img class="image_flex_product" src="{{ product.image }}" alt="product photo">
+            </div>
+            <div class="col-12 col-sm-12 col-lg-6">
+                <div class="card-body">
+                    <h1 class="card-title">Title: {{ product.title }}</h1>
+                    <p>Category: {{ product.category }}</p>
+                    <p class="card-text transfer_text_space">Description: {{ product.description }}</p>
+                    {% for rating in product.reviews.all %}
+                    <p>Rating: {{ rating.rating }}</p>
+                    {% endfor %}
+                    <h4>Reviews:</h4>
+
+                    {% for review in reviews %}
+                    <div>
+                        <p><b>Review author: {{ review.author }}</b> placed at {{ review.created_at|date:'d.m.Y H:i:s'
+                            }}</p>
+                        <div class="pre"><b>Review text:</b> {{ review.text }}</div>
+                        <div class="pre"><b>Product's rating:</b> {{ review.rating }}</div>
+                    </div>
+                    <p>
+                        <a href="{% url 'review_detail' review.pk %}">See more..</a>
+                    </p>
+                    {% empty %}
+                    <p>No reviews yet.</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endblock %}

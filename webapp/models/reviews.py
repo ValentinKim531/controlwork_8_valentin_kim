@@ -17,34 +17,29 @@ class Review(models.Model):
         on_delete=models.SET_DEFAULT,
         max_length=30,
         default=1,
-        related_name='reviews',
-        verbose_name='Автор'
+        related_name="reviews",
+        verbose_name="Автор",
     )
     product = models.ForeignKey(
-        'webapp.Product',
-        related_name='reviews',
+        "webapp.Product",
+        related_name="reviews",
         on_delete=models.CASCADE,
-        verbose_name='Продукт'
+        verbose_name="Продукт",
     )
     text = models.TextField(
-        max_length=2000,
-        verbose_name='Текст',
-        null=False,
-        blank=False
+        max_length=2000, verbose_name="Текст", null=False, blank=False
     )
     rating = models.IntegerField(
         verbose_name="Рейтинг",
         null=False,
         blank=False,
-        choices=RatingChoice.choices
+        choices=RatingChoice.choices,
     )
     created_at = models.DateTimeField(
-        auto_now_add=True,
-        verbose_name="Время создания"
+        auto_now_add=True, verbose_name="Время создания"
     )
     updated_at = models.DateTimeField(
-        auto_now=True,
-        verbose_name="Дата и время обновления"
+        auto_now=True, verbose_name="Дата и время обновления"
     )
 
     def __str__(self):
@@ -53,5 +48,3 @@ class Review(models.Model):
     class Meta:
         verbose_name = "Отзыв"
         verbose_name_plural = "Отзывы"
-
-

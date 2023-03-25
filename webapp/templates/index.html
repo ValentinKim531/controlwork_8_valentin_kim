@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+{% block title %}Home{% endblock %}
+{% block content %}
+
+<div class="container-fluid">
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+        {% for product in products %}
+        <div class="col">
+            <ol class="list-group">
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <img class="image_flex_products" src="{{ product.image }}" alt="product photo">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">
+                            <a href="{% url 'product_detail' product.pk%}">Title: {{ product.title }}</a>
+                        </div>
+                        <div class="fw-bold">Categories: {{ product.category }}</div>
+                        <span class="badge bg-info rounded-pill">
+                            <a href="{% url 'product_detail' product.pk%}" class="button-text-color">see more
+                                >>></a></span>
+                    </div>
+                </li>
+            </ol>
+        </div>
+        {% empty %}
+        <h3>Records not found</h3>
+        {% endfor %}
+    </div>
+    {% if is_paginated %}
+    {% include 'partial/pagination.html' %}
+    {% endif %}
+</div>
+{% endblock %}
