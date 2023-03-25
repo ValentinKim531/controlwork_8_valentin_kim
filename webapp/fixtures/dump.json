@@ -1,0 +1,102 @@
+[
+{
+  "model": "webapp.product",
+  "pk": 1,
+  "fields": {
+    "title": "ASUS VIVOBOOK PRO 14 OLED (K3400)",
+    "category": "laptops",
+    "description": "В Vivobook Pro 14 OLED установлен экран с тонкими рамками и разрешением 2880 на 1800 точек, соотношением сторон 16 на 10 (оптимально для офисных задач), цветовым охватом 100% DCI-P3 (отображает 1.07 млрд цветов), частотой обновления 90 Гц и откликом 0,2 мс.",
+    "image": "https://mobile-review.com/all/wp-content/uploads/2021/12/4-1.jpg",
+    "created_at": "2023-03-25T06:30:08.211Z",
+    "updated_at": "2023-03-25T06:30:08.211Z",
+    "is_deleted": false
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 2,
+  "fields": {
+    "title": "Xiaomi 13 Pro 12/512Gb",
+    "category": "phones",
+    "description": "Xiaomi 13 Pro с профессиональной системой камер выводит мастерство мобильной фотографии на ранее недостижимый уровень. 6,73-дюймовый AMOLED дисплей с частотой обновления 120 Гц обеспечивает супер-плавный скроллинг и ощущение живого присутствия при просмотре.",
+    "image": "https://imgproxy.forte.kz/i5T3FytRzEOAcnpfKGB9d9kUtfv1O7oaIo41eLTPulw/fit/468/468/ce/0/aHR0cHM6Ly9vYmplY3QucHNjbG91ZC5pby9kYXJiaXovY2F0YWxvZ3MvYmU4L2Q3M2E0M2U1LWJlODctMTFlZC1iZGNkLWI2MTUzNTUyNTRhNi5wbmc=.webp",
+    "created_at": "2023-03-25T06:31:27.973Z",
+    "updated_at": "2023-03-25T06:31:27.973Z",
+    "is_deleted": false
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 3,
+  "fields": {
+    "title": "Фильм \"Джон Уик 4\" (2023)",
+    "category": "other",
+    "description": "В сети уже появились первые отзывы критиков на долгожданную для многих четвертую часть \"Джона Уика\" с Киану Ривзом который по традиции исполняет там главную роль.",
+    "image": "https://i.otzovik.com/objects/b/2230000/2221621.png",
+    "created_at": "2023-03-25T06:34:01.703Z",
+    "updated_at": "2023-03-25T06:34:01.703Z",
+    "is_deleted": false
+  }
+},
+{
+  "model": "webapp.product",
+  "pk": 4,
+  "fields": {
+    "title": "Мультитул 10 в 1 Agatha",
+    "category": "other",
+    "description": "",
+    "image": "https://texterra.ru/upload/iblock/17a/zk4qwtfo4ttmm4qrgtkne62ncyc70vyj/anons.webp",
+    "created_at": "2023-03-25T06:35:28.701Z",
+    "updated_at": "2023-03-25T06:35:28.701Z",
+    "is_deleted": false
+  }
+},
+{
+  "model": "webapp.review",
+  "pk": 1,
+  "fields": {
+    "author": 1,
+    "product": 1,
+    "text": "По своей цене ASUS Vivobook Pro 14 OLED – это не только чуть ли не самый доступный OLED-ноутбук с графикой от Nvidia, но и отличный высокопроизводительный инструмент на несколько лет вперед.",
+    "rating": 4,
+    "created_at": "2023-03-25T06:37:48.415Z",
+    "updated_at": "2023-03-25T06:37:48.415Z"
+  }
+},
+{
+  "model": "webapp.review",
+  "pk": 2,
+  "fields": {
+    "author": 1,
+    "product": 2,
+    "text": "Начнем с того, что серия Xiaomi 13 скорее всего станет еще одной запоминающейся моделью Xiaomi. Xiaomi 13 Pro больше не похож на предыдущие модели Pro и выглядит слегка \"зажатым\" по сравнению со стандартным и ультра...",
+    "rating": 2,
+    "created_at": "2023-03-25T06:40:44.710Z",
+    "updated_at": "2023-03-25T06:40:44.710Z"
+  }
+},
+{
+  "model": "webapp.review",
+  "pk": 3,
+  "fields": {
+    "author": 1,
+    "product": 3,
+    "text": "«Джон Уик 4» безусловно, стал наиболее выдающимся из всех версий. Фильм похож на предыдущие версии в нем также немного диалогов и различной болтовни, больше действия, экшена, динамики если хотите – в общем все три часа...",
+    "rating": 5,
+    "created_at": "2023-03-25T06:41:34.594Z",
+    "updated_at": "2023-03-25T06:41:34.594Z"
+  }
+},
+{
+  "model": "webapp.review",
+  "pk": 4,
+  "fields": {
+    "author": 1,
+    "product": 4,
+    "text": "Эргономичный,простой в использовании, но Китай и мягкое железо.",
+    "rating": 2,
+    "created_at": "2023-03-25T06:43:06.044Z",
+    "updated_at": "2023-03-25T06:43:06.044Z"
+  }
+}
+]
