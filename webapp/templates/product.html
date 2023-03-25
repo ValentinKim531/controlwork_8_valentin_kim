@@ -1,9 +1,17 @@
 {% extends 'base.html' %}
 {% block title %}Product{% endblock %}
 {% block menu %}
+{% if user.is_authenticated %}
+{% if perms.webapp.change_product %}
 <a href="{% url 'product_update' product.pk %}" class="btn btn-success">Update Product</a>
+{% endif %}
+{% if perms.webapp.delete_product %}
 <a href="{% url 'product_delete' product.pk %}" class="btn btn-danger">Delete Product</a>
+{% endif %}
+{% if perms.webapp.add_review %}
 <a href="{% url 'product_review_add' product.pk %}" class="btn btn-primary">Add review</a></li>
+{% endif %}
+{% endif %}
 {% endblock %}
 {% block content %}
 <div class="container-fluid">

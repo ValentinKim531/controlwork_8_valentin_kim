@@ -1,7 +1,5 @@
-from django.contrib import messages
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.messages.views import SuccessMessageMixin
-from django.shortcuts import render, redirect, get_object_or_404
 from django.urls import reverse, reverse_lazy
 from django.views.generic import DetailView, CreateView, UpdateView, DeleteView
 
@@ -9,11 +7,17 @@ from webapp.forms import ProductForm
 from webapp.models import Product
 
 
-class ProductCreateView(SuccessMessageMixin, CreateView):
+class GroupPermissionMixin(UserPassesTestMixin):
+    def test_func(self):
+        return self.request.user.groups.filter(name__in=['Moderators']).exists()
+
+
+class ProductCreateView(GroupPermissionMixin, SuccessMessageMixin, CreateView):
     template_name = "product_create.html"
     model = Product
     form_class = ProductForm
     success_message = "Продукт добавлен"
+    groups = ['Moderators']
 
     def get_success_url(self):
         return reverse("product_detail", kwargs={"pk": self.object.pk})
@@ -23,11 +27,12 @@ class ProductCreateView(SuccessMessageMixin, CreateView):
         return super().form_valid(form)
 
 
-class ProductUpdateView(SuccessMessageMixin, UpdateView):
+class ProductUpdateView(GroupPermissionMixin, SuccessMessageMixin, UpdateView):
     template_name = "product_update.html"
     form_class = ProductForm
     model = Product
     success_message = "Продукт обновлен"
+    groups = ['Moderators']
 
     def get_success_url(self):
         return reverse("product_detail", kwargs={"pk": self.object.pk})
@@ -45,8 +50,9 @@ class ProductDetail(DetailView):
         return context
 
 
-class ProductDeleteView(SuccessMessageMixin, DeleteView):
+class ProductDeleteView(GroupPermissionMixin, SuccessMessageMixin, DeleteView):
     template_name = "product_confirm_delete.html"
     model = Product
     success_url = reverse_lazy("index")
     success_message = "Продукт удален"
+    groups = ['Moderators']

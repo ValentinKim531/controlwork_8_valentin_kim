@@ -5,6 +5,7 @@ from django.views.generic import CreateView, UpdateView, DeleteView, DetailView
 
 from webapp.forms import ProductReviewForm
 from webapp.models import Product, Review
+from webapp.views.products import GroupPermissionMixin
 
 
 class ReviewDetailView(DetailView):
@@ -12,7 +13,7 @@ class ReviewDetailView(DetailView):
     model = Review
 
 
-class ProductReviewCreateView(CreateView):
+class ProductReviewCreateView(GroupPermissionMixin, CreateView):
     model = Review
     template_name = "review_create.html"
     form_class = ProductReviewForm
@@ -26,17 +27,19 @@ class ProductReviewCreateView(CreateView):
         return redirect("product_detail", pk=product.pk)
 
 
-class ReviewUpdateView(UpdateView):
+class ReviewUpdateView(GroupPermissionMixin, UpdateView):
     model = Review
     template_name = "review_update.html"
     form_class = ProductReviewForm
     context_object_name = "review"
+    groups = ['Moderators']
 
     def get_success_url(self):
         return reverse("review_detail", kwargs={"pk": self.object.pk})
 
 
-class ReviewDeleteView(DeleteView):
+class ReviewDeleteView(GroupPermissionMixin, DeleteView):
     template_name = "review_confirm_delete.html"
     model = Review
     success_url = reverse_lazy("index")
+    groups = ['Moderators']

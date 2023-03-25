@@ -33,9 +33,11 @@
                         </li>
                         {% block menu %}{% endblock %}
                         {% if request.user.is_authenticated %}
+                        {% if perms.webapp.add_product %}
                         <li class="nav-item">
                             <a class="btn btn-primary" href="{% url 'product_add' %}">Add Product</a>
                         </li>
+                        {% endif %}
                         <li>
                             <a href="{% url 'profile' user.pk %}" class="btn btn-primary">Profile</a>
                         </li>
